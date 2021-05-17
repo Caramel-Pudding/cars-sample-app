@@ -20,12 +20,40 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:nowatch": "react-scripts test --watchAll=false",
+    "eject": "react-scripts eject",
+    "simple-git-hooks:update": "npx simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn build && yarn test:nowatch"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "airbnb-typescript",
+      "airbnb/hooks",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "plugin:jsx-a11y/recommended",
+      "plugin:sonarjs/recommended",
+      "plugin:unicorn/recommended",
+      "plugin:jest/recommended",
+      "plugin:jest/style",
+      "plugin:prettier/recommended"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "parserOptions": {
+          "project": "./tsconfig.json"
+        },
+        "rules": {
+          "@typescript-eslint/quotes": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -39,5 +67,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-sonarjs": "^0.7.0",
+    "eslint-plugin-unicorn": "^32.0.1",
+    "prettier": "^2.3.0",
+    "react-bootstrap": "^1.6.0",
+    "react-router-dom": "^5.2.0",
+    "simple-git-hooks": "^2.4.1"
   }
 }
