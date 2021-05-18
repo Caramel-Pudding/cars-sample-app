@@ -11,3 +11,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+.robotoLgBold {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.robotoMdBold {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.robotoMd {
+  font-family: Roboto;
+  font-size: 18px;
+}
+
+.robotoSm {
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.robotoXSm {
+  font-family: Roboto;
+  font-size: 12px;
+}
+
+.dark {
+  color: #4A4A4A;
+}
+
+.light {
+  color: #EDEDED
+}
+
+.orange {
+  color: #EA7F28;
+}
+
+.brown {
+  color: #D37324;
+}
