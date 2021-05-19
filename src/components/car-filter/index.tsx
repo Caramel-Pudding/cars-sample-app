@@ -1,6 +1,8 @@
 import React, { FC, memo, useState, useEffect } from "react";
 import classnames from "classnames";
 
+import { useAppDispatch } from "../../hooks/redux";
+import { setColor, setManufacturer } from "../../redux/features/filters/slice";
 import { fetchColors } from "../../network/gateways/colors";
 import { fetchManufacturers } from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../types/cars";
@@ -30,8 +32,15 @@ export const CarFilter: FC = memo(() => {
     fetchData();
   }, []);
 
+  const dispatch = useAppDispatch();
+
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [selectedManufacturer, setSelectedManufacturer] = useState<string>("");
+
+  const handleFiltration = () => {
+    dispatch(setColor({ value: selectedColor }));
+    dispatch(setManufacturer({ value: selectedManufacturer }));
+  };
 
   return (
     <form className={styles.container}>
@@ -57,6 +66,7 @@ export const CarFilter: FC = memo(() => {
         <button
           className={classnames(styles.filterButton, Fonts.MdBold)}
           type="button"
+          onClick={handleFiltration}
         >
           Filter
         </button>
