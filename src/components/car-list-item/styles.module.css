@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    border: solid 1px var(--light);
+    padding: var(--offMd);
+    align-items: center;
+}
+
+.infoBlock {
+    margin-left: var(--offMd)
+}
+
+.headerTitle {
+    margin: 0;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--orange)
+}

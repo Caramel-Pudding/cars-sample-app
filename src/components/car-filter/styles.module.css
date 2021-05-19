@@ -1,5 +1,6 @@
 .container {
     width: 20vw;
+    height: fit-content;
     padding: var(--offLg);
     margin: var(--offLg);
     border: solid 1px var(--light);
@@ -25,4 +26,20 @@
 
 .filterButton:active {
     background-color: var(--brown);
+}
+
+.selectContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.selectInput {
+    border: solid 1px var(--light);
+    padding: var(--offSm);
+    margin-top: var(--offSm);
+}
+
+.selectOptions {
+    
 }

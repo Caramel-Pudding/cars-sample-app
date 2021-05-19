@@ -1,13 +1,14 @@
 import React, { FC, memo, useState, useEffect } from "react";
-
 import classnames from "classnames";
-import { fetchColors } from "../../network/methods/colors";
-import { fetchManufacturers } from "../../network/methods/manufacturers";
+
+import { fetchColors } from "../../network/gateways/colors";
+import { fetchManufacturers } from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../types/cars";
-import { BasicMultiSelct } from "../basic-multi-select";
+import { BasicSelct } from "../basic-select";
 
 import styles from "./styles.module.css";
 import { Fonts } from "../../consts/css";
+import { capitalizeFirstLetter } from "../../utilities/strings";
 
 export const CarFilter: FC = memo(() => {
   const [availableColors, setAvailableColors] = useState<string[]>([]);
@@ -29,26 +30,28 @@ export const CarFilter: FC = memo(() => {
     fetchData();
   }, []);
 
-  const [selectedColors, setSelectedColor] = useState<string[]>([]);
-  const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(
-    []
-  );
+  const [selectedColor, setSelectedColor] = useState<string>("");
+  const [selectedManufacturer, setSelectedManufacturer] = useState<string>("");
 
   return (
     <form className={styles.container}>
-      <BasicMultiSelct
+      <BasicSelct
         placeholder="All car colors"
-        options={availableColors}
+        options={availableColors.map((color) => capitalizeFirstLetter(color))}
         handler={(color) => setSelectedColor(color)}
-        chosenOptions={selectedColors}
+        chosenOption={selectedColor}
         labelText="Color"
+        containerClasses={styles.selectContainer}
+        selectClasses={styles.selectInput}
       />
-      <BasicMultiSelct
+      <BasicSelct
         placeholder="All manufacturers"
         options={availableManufacturers}
-        handler={(manufacturer) => setSelectedManufacturers(manufacturer)}
-        chosenOptions={selectedManufacturers}
+        handler={(manufacturer) => setSelectedManufacturer(manufacturer)}
+        chosenOption={selectedManufacturer}
         labelText="Manufacturers"
+        containerClasses={styles.selectContainer}
+        selectClasses={styles.selectInput}
       />
       <section className={styles.buttonContainer}>
         <button
