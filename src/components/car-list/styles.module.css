@@ -3,15 +3,6 @@
     margin: var(--offLg);
 }
 
-.headTitle {
-    margin: 0;
-    color: var(--dark)
-}
-
-.resultsSubTitle {
-    margin: var(--offMd) 0;
-}
-
 .listElement {
     margin: var(--offMd) 0;
 }

@@ -3,6 +3,7 @@ import classnames from "classnames";
 
 import { useAppDispatch } from "../../hooks/redux";
 import { setColor, setManufacturer } from "../../redux/features/filters/slice";
+import { setCurrentPage } from "../../redux/features/pagination/slice";
 import { fetchColors } from "../../network/gateways/colors";
 import { fetchManufacturers } from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../types/cars";
@@ -40,6 +41,7 @@ export const CarFilter: FC = memo(() => {
   const handleFiltration = () => {
     dispatch(setColor({ value: selectedColor }));
     dispatch(setManufacturer({ value: selectedManufacturer }));
+    dispatch(setCurrentPage({ value: 1 }));
   };
 
   return (

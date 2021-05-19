@@ -1,11 +1,10 @@
 import React, { FC, memo, useEffect, useState } from "react";
-import classnames from "classnames";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { setTotalPageCount } from "../../redux/features/pagination/slice";
 import { CarListItem } from "../car-list-item";
+import { CarListHeader } from "../car-list-header";
 import { Pagination } from "../pagination";
-import { Fonts } from "../../consts/css";
 import { Car } from "../../types/cars";
 import { fetchCars } from "../../network/gateways/cars/methods/get-all";
 
@@ -15,6 +14,7 @@ export const CarList: FC = memo(() => {
   const dispatch = useAppDispatch();
   const { color, manufacturer } = useAppSelector((state) => state.filters);
   const { currentPage } = useAppSelector((state) => state.pagination);
+  const { sort } = useAppSelector((state) => state.sorting);
 
   const [totalCarsCount, setTotalCarsCount] = useState(0);
   const [cars, setCars] = useState<Car[]>([]);
@@ -25,6 +25,7 @@ export const CarList: FC = memo(() => {
         color,
         manufacturer,
         page: currentPage,
+        sort,
       });
 
       setCars(data.cars);
@@ -33,19 +34,17 @@ export const CarList: FC = memo(() => {
     };
 
     fetchData();
-  }, [color, manufacturer, currentPage, dispatch]);
+  }, [color, manufacturer, currentPage, sort, dispatch]);
 
   return (
     <article className={styles.container}>
-      <h1 className={classnames(Fonts.LgBold, styles.headTitle)}>
-        Available Cars
-      </h1>
-      <div className={classnames(styles.resultsSubTitle, Fonts.Md)}>
-        Showing {cars.length} of {totalCarsCount} results
-      </div>
+      <CarListHeader
+        totalCarsCount={totalCarsCount}
+        currentPageCarsCount={cars.length}
+      />
       <ul>
         {cars.map((car: Car) => (
-          <li className={styles.listElement}>
+          <li key={car.stockNumber} className={styles.listElement}>
             <CarListItem car={car} />
           </li>
         ))}

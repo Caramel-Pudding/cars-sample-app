@@ -1,4 +1,4 @@
-import { Sort } from "../../../../types/general";
+import { Sort } from "../../../../redux/features/sorting/types";
 import { GetCarsRequestParams, GetCarsResponse } from "../types/get-all";
 import { getCarsLinkBuilder } from "../utilities/link-builder";
 

@@ -10,6 +10,10 @@
     cursor: pointer;
 }
 
+.changePageButton:not([disabled]):hover {
+    text-decoration: underline;
+}
+
 .changePageButton:disabled {
     color: var(--dark);
     cursor: default;

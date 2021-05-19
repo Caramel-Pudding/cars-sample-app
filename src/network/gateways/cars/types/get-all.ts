@@ -1,5 +1,5 @@
 import { Car } from "../../../../types/cars";
-import { Sort } from "../../../../types/general";
+import { Sort } from "../../../../redux/features/sorting/types";
 
 export interface GetCarsRequestParams {
   page: number;

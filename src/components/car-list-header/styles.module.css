@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.headTitle {
+    margin: 0;
+    color: var(--dark)
+}
+
+.resultsSubTitle {
+    margin: var(--offMd) 0;
+}
+
+.selectContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.selectInput {
+    border: solid 1px var(--light);
+    padding: var(--offSm);
+    margin-top: var(--offSm);
+    cursor: pointer;
+}
