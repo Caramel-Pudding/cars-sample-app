@@ -1,9 +1,9 @@
 import React, { FC, memo } from "react";
 
-import { CarPicker } from "../../components/car-picker";
+import { CarFilter } from "../../components/car-filter";
 
 export const Main: FC = memo(() => (
   <article>
-    <CarPicker />
+    <CarFilter />
   </article>
 ));

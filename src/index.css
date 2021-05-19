@@ -15,6 +15,30 @@ code {
 ul,
 ol {
   list-style-type: none;
+  padding-inline-start: 0
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
 }
 
 .robotoLgBold {
@@ -44,18 +68,12 @@ ol {
   font-size: 12px;
 }
 
-.dark {
-  color: #4A4A4A;
-}
-
-.light {
-  color: #EDEDED
-}
-
-.orange {
-  color: #EA7F28;
-}
-
-.brown {
-  color: #D37324;
+:root {
+  --dark: #4A4A4A;
+  --light: #EDEDED;
+  --orange: #EA7F28;
+  --brown: #D37324;
+  --offSm: 8px;
+  --offMd: 12px;
+  --offLg: 24px;
 }

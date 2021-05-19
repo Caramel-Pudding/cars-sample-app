@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
 export const Header: FC = memo(() => (
   <header className={styles.header}>
     <Link to={Routes.Main}>
-      <img src={logo} alt="Auto logo" />
+      <img height={30} src={logo} alt="Auto logo" />
     </Link>
     <NavBar />
   </header>

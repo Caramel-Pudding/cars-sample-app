@@ -1,7 +1,7 @@
 import { autoBasicRoute } from "../consts/routes";
 
 interface FetchColorResponse {
-  colors: string[];
+  readonly colors: string[];
 }
 
 export const fetchColors = async (): Promise<FetchColorResponse> => {

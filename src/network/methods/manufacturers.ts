@@ -2,7 +2,7 @@ import { autoBasicRoute } from "../consts/routes";
 import { Manufacturer } from "../../types/cars";
 
 interface FetchManufacturersResponse {
-  manufacturers: Manufacturer[];
+  readonly manufacturers: Manufacturer[];
 }
 
 export const fetchManufacturers =

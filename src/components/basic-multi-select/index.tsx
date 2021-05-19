@@ -1,5 +1,6 @@
-import React, { FC, memo, FormEvent } from "react";
+import React, { FC, memo, useState, useRef, KeyboardEvent } from "react";
 import classnames from "classnames";
+import { useCloseOnOutsideClick } from "../../hooks/close-on-outside-click";
 
 import styles from "./styles.module.css";
 
@@ -25,36 +26,71 @@ export const BasicMultiSelct: FC<BasicMultiSelctProps> = memo(
     selectClasses = "",
     optionClasses = "",
   }) => {
-    const selectHandler = (event: FormEvent<HTMLSelectElement>) => {
-      if (chosenOptions.includes(event.currentTarget.value)) {
-        handler(
-          chosenOptions.filter((option) => option !== event.currentTarget.value)
-        );
-      } else {
-        handler([...chosenOptions, event.currentTarget.value]);
+    const [isOpen, setIsOpen] = useState(false);
+    const list = useRef<HTMLUListElement>(null);
+    useCloseOnOutsideClick(setIsOpen, isOpen, list);
+
+    const toggleIsOpened = () => {
+      setIsOpen((prevState) => !prevState);
+    };
+
+    const keyboardHandler = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        toggleIsOpened();
       }
     };
+
+    const isElementSelected = (value: string) => chosenOptions.includes(value);
+
+    const selectHandler = (value: string) => {
+      if (isElementSelected(value)) {
+        handler(chosenOptions.filter((option) => option !== value));
+      } else {
+        handler([...chosenOptions, value]);
+      }
+    };
+
+    const selectedValuesFormattedForInput = chosenOptions.join(", ");
 
     return (
       <label className={classnames(styles.container, containerClasses)}>
         {labelText}
-        <select
-          placeholder={placeholder}
-          className={classnames(selectClasses)}
-          multiple
-          value={chosenOptions}
-          onBlur={selectHandler}
+        <button
+          tabIndex={0}
+          type="button"
+          className={classnames(styles.input, selectClasses)}
+          onClick={toggleIsOpened}
+          onKeyDown={keyboardHandler}
         >
-          {options.map((option) => (
-            <option
-              key={option}
-              className={classnames(optionClasses)}
-              value={option}
-            >
-              {option}
-            </option>
-          ))}
-        </select>
+          {chosenOptions.length > 0
+            ? selectedValuesFormattedForInput
+            : placeholder}
+        </button>
+        {isOpen && (
+          <ul className={styles.list} ref={list}>
+            {options.map((option) => (
+              <li
+                key={option}
+                className={classnames(
+                  styles.listElement,
+                  isElementSelected(option)
+                    ? styles.listElementSelected
+                    : styles.listElementNotSelected,
+                  optionClasses
+                )}
+                value={option}
+              >
+                <button
+                  className={styles.button}
+                  type="button"
+                  onClick={() => selectHandler(option)}
+                >
+                  {option}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </label>
     );
   }

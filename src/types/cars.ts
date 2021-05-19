@@ -1,8 +1,8 @@
 export interface Car {
-  name: string;
+  readonly name: string;
 }
 
 export interface Manufacturer {
-  name: string;
-  models: Car[];
+  readonly name: string;
+  readonly models: Car[];
 }

@@ -5,10 +5,3 @@ export enum Fonts {
   Sm = "robotoSm",
   XSm = "robotoXSm",
 }
-
-export enum Colors {
-  Dark = "dark",
-  Light = "light",
-  Orange = "orange",
-  Brown = "brown",
-}

@@ -1,4 +1,43 @@
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.input {
+    border: solid 1px var(--light);
+    padding: var(--offSm);
+    margin-top: var(--offSm);
+    white-space: nowrap;
+    overflow-y: scroll;
+}
+
+.list {
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    z-index: 1;
+    width: 20vw;
+}
+
+.listElement {
+    border: solid 1px var(--light);
+    transition: background-color 0.2s ease-in;
+}
+
+.listElementSelected {
+    background-color: rgba(74, 74, 74, 0.2);
+}
+  
+.listElementNotSelected:hover {
+    background-color: rgba(74, 74, 74, 0.1);
+}
+  
+.listElementNotSelected:focus {
+    background-color: rgba(74, 74, 74, 0.1);
+}
+
+.button {
+    padding: var(--offSm);
+    width: 100%
 }

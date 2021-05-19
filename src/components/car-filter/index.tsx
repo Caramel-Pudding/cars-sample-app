@@ -1,11 +1,15 @@
 import React, { FC, memo, useState, useEffect } from "react";
 
+import classnames from "classnames";
 import { fetchColors } from "../../network/methods/colors";
 import { fetchManufacturers } from "../../network/methods/manufacturers";
 import { Manufacturer } from "../../types/cars";
 import { BasicMultiSelct } from "../basic-multi-select";
 
-export const CarPicker: FC = memo(() => {
+import styles from "./styles.module.css";
+import { Fonts } from "../../consts/css";
+
+export const CarFilter: FC = memo(() => {
   const [availableColors, setAvailableColors] = useState<string[]>([]);
   const [availableManufacturers, setAvailableManufacturers] = useState<
     string[]
@@ -31,7 +35,7 @@ export const CarPicker: FC = memo(() => {
   );
 
   return (
-    <form>
+    <form className={styles.container}>
       <BasicMultiSelct
         placeholder="All car colors"
         options={availableColors}
@@ -46,7 +50,14 @@ export const CarPicker: FC = memo(() => {
         chosenOptions={selectedManufacturers}
         labelText="Manufacturers"
       />
-      <button type="button">Filter</button>
+      <section className={styles.buttonContainer}>
+        <button
+          className={classnames(styles.filterButton, Fonts.MdBold)}
+          type="button"
+        >
+          Filter
+        </button>
+      </section>
     </form>
   );
 });

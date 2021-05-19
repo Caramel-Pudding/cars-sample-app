@@ -1,0 +1,28 @@
+.container {
+    width: 20vw;
+    padding: var(--offLg);
+    margin: var(--offLg);
+    border: solid 1px var(--light);
+}
+
+.container > *:not(:first-child) {
+    margin-top: var(--offMd);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.filterButton {
+    height: 32px;
+    width: 128px;
+    border-radius: 4px;
+    background-color: var(--orange);
+    color: white
+}
+
+.filterButton:active {
+    background-color: var(--brown);
+}
