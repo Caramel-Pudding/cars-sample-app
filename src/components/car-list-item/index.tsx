@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 
 import { Fonts } from "../../consts/css";
-import { Car } from "../../types/cars";
+import { Car } from "../../redux/features/cars/types";
 
 import styles from "./styles.module.css";
-import { capitalizeFirstLetter } from "../../utilities/strings";
+import { constructCarInfoString } from "../../utilities/cars";
 
 interface CarListItemProps {
   car: Car;
@@ -19,13 +19,8 @@ export const CarListItem: FC<CarListItemProps> = memo(({ car }) => (
       <h2 className={classnames(Fonts.LgBold, styles.headerTitle)}>
         {car.modelName}
       </h2>
-      <div className={Fonts.Md}>
-        <span>Stock # {car.stockNumber}</span> -{" "}
-        <span>{`${car.mileage.number} ${car.mileage.unit}`}</span> -{" "}
-        <span>{car.fuelType}</span> -{" "}
-        <span>{capitalizeFirstLetter(car.color)}</span>
-      </div>
-      <Link className={styles.link} to={car.manufacturerName}>
+      <div className={Fonts.Md}>{constructCarInfoString(car)}</div>
+      <Link className={styles.link} to={`details/${car.stockNumber}`}>
         View details
       </Link>
     </section>

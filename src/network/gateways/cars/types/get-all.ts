@@ -1,4 +1,4 @@
-import { Car } from "../../../../types/cars";
+import { Car } from "../../../../redux/features/cars/types";
 import { Sort } from "../../../../redux/features/sorting/types";
 
 export interface GetCarsRequestParams {

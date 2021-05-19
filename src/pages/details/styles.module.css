@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: row;
+    margin: 0 400px 400px;
+}

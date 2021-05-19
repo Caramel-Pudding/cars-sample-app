@@ -6,7 +6,7 @@ import { setColor, setManufacturer } from "../../redux/features/filters/slice";
 import { setCurrentPage } from "../../redux/features/pagination/slice";
 import { fetchColors } from "../../network/gateways/colors";
 import { fetchManufacturers } from "../../network/gateways/manufacturers";
-import { Manufacturer } from "../../types/cars";
+import { Manufacturer } from "../../redux/features/cars/types";
 import { BasicSelct } from "../basic-select";
 
 import styles from "./styles.module.css";

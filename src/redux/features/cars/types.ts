@@ -19,9 +19,22 @@ export interface Car {
 }
 
 interface ManufacturerCar {
-  name: string;
+  readonly name: string;
 }
 export interface Manufacturer {
   readonly name: string;
   readonly models: ManufacturerCar[];
+}
+
+export interface CarsState {
+  readonly cars: Car[];
+  readonly totalCarsCount: number;
+}
+
+export interface CarsChangePayload {
+  readonly cars: Car[];
+}
+
+export interface TotalCarsCountChangePayload {
+  readonly value: number;
 }

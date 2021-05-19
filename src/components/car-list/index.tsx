@@ -1,11 +1,12 @@
-import React, { FC, memo, useEffect, useState } from "react";
+import React, { FC, memo, useEffect } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { setTotalPageCount } from "../../redux/features/pagination/slice";
+import { setCars, setTotalCarsCount } from "../../redux/features/cars/slice";
 import { CarListItem } from "../car-list-item";
 import { CarListHeader } from "../car-list-header";
 import { Pagination } from "../pagination";
-import { Car } from "../../types/cars";
+import { Car } from "../../redux/features/cars/types";
 import { fetchCars } from "../../network/gateways/cars/methods/get-all";
 
 import styles from "./styles.module.css";
@@ -15,9 +16,7 @@ export const CarList: FC = memo(() => {
   const { color, manufacturer } = useAppSelector((state) => state.filters);
   const { currentPage } = useAppSelector((state) => state.pagination);
   const { sort } = useAppSelector((state) => state.sorting);
-
-  const [totalCarsCount, setTotalCarsCount] = useState(0);
-  const [cars, setCars] = useState<Car[]>([]);
+  const { cars, totalCarsCount } = useAppSelector((state) => state.cars);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +27,8 @@ export const CarList: FC = memo(() => {
         sort,
       });
 
-      setCars(data.cars);
-      setTotalCarsCount(data.totalCarsCount);
+      dispatch(setCars({ cars: data.cars }));
+      dispatch(setTotalCarsCount({ value: data.totalCarsCount }));
       dispatch(setTotalPageCount({ value: data.totalPageCount }));
     };
 

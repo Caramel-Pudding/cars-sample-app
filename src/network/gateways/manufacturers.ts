@@ -1,5 +1,5 @@
 import { autoBasicRoute } from "../consts/routes";
-import { Manufacturer } from "../../types/cars";
+import { Manufacturer } from "../../redux/features/cars/types";
 
 interface FetchManufacturersResponse {
   readonly manufacturers: Manufacturer[];
