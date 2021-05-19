@@ -21,7 +21,8 @@
     width: 128px;
     border-radius: 4px;
     background-color: var(--orange);
-    color: white
+    color: white;
+    cursor: pointer;
 }
 
 .filterButton:active {
@@ -38,8 +39,5 @@
     border: solid 1px var(--light);
     padding: var(--offSm);
     margin-top: var(--offSm);
-}
-
-.selectOptions {
-    
+    cursor: pointer;
 }

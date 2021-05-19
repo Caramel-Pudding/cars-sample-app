@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// eslint-disable-next-line import/no-cycle
 import { FiltersState, FiltersChangePayload } from "./types";
 
 // Define the initial state using that type

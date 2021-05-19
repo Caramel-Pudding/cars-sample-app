@@ -18,10 +18,10 @@ export interface Car {
   readonly pictureUrl: string;
 }
 
-interface ManufcaturerCar {
+interface ManufacturerCar {
   name: string;
 }
 export interface Manufacturer {
   readonly name: string;
-  readonly models: ManufcaturerCar[];
+  readonly models: ManufacturerCar[];
 }

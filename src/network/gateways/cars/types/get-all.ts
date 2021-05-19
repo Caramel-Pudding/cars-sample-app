@@ -4,7 +4,7 @@ import { Sort } from "../../../../types/general";
 export interface GetCarsRequestParams {
   page: number;
   color?: string;
-  manufcaturer?: string;
+  manufacturer?: string;
   sort?: Sort;
 }
 

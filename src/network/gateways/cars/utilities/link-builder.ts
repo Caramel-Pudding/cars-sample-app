@@ -6,17 +6,17 @@ import { GetCarsRequestParams } from "../types/get-all";
 export const getCarsLinkBuilder = ({
   page,
   color,
-  manufcaturer,
+  manufacturer,
   sort = Sort.Ascending,
 }: GetCarsRequestParams): string => {
-  if (color && manufcaturer) {
-    return `${autoBasicRoute}/cars?manufacturer=${manufcaturer}&color=${color}&sort=${sort}&page=${page}`;
+  if (color && manufacturer) {
+    return `${autoBasicRoute}/cars?manufacturer=${manufacturer}&color=${color}&sort=${sort}&page=${page}`;
   }
   if (color) {
     return `${autoBasicRoute}/cars?color=${color}&sort=${sort}&page=${page}`;
   }
-  if (manufcaturer) {
-    return `${autoBasicRoute}/cars?manufacturer=${manufcaturer}&sort=${sort}&page=${page}`;
+  if (manufacturer) {
+    return `${autoBasicRoute}/cars?manufacturer=${manufacturer}&sort=${sort}&page=${page}`;
   }
   return `${autoBasicRoute}/cars?sort=${sort}&page=${page}`;
 };

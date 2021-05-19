@@ -13,7 +13,7 @@ interface NavItemProps {
 
 export const NavItem: FC<NavItemProps> = memo(({ label, route }) => (
   <li className={styles.navItem}>
-    <Link className={classnames(styles.link, Fonts.Md)} to={route}>
+    <Link tabIndex={0} className={classnames(styles.link, Fonts.Md)} to={route}>
       {label}
     </Link>
   </li>
