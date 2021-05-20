@@ -11,49 +11,42 @@ interface CarSaveProps {
   car: Car;
 }
 
-enum SaveStatus {
-  NotSaved,
-  Saved,
-  AlreadyExists,
-}
-
 export const CarSave: FC<CarSaveProps> = memo(({ car }) => {
-  const [currentSaveStatus, setCurrentSaveStatus] = useState(
-    SaveStatus.NotSaved
-  );
   const [savedCars, setSavedCars] = useLocalStorage<Car[]>("savedCars", []);
 
+  const isCarAlreadyAdded = savedCars.some(
+    (savedCar: Car) => savedCar.stockNumber === car.stockNumber
+  );
+
+  const [isAdded, setIsAdded] = useState(isCarAlreadyAdded);
+
   const handleSaveClick = () => {
-    if (
-      savedCars.some(
-        (savedCar: Car) => savedCar.stockNumber === car.stockNumber
-      )
-    ) {
-      setCurrentSaveStatus(SaveStatus.AlreadyExists);
+    if (isCarAlreadyAdded) {
       return;
     }
     setSavedCars([...savedCars, car]);
-    setCurrentSaveStatus(SaveStatus.Saved);
+    setIsAdded(true);
   };
 
-  const getCurrentSaveStatusText = () => {
-    switch (currentSaveStatus) {
-      case SaveStatus.Saved: {
-        return "Successfully saved!";
-      }
-      case SaveStatus.AlreadyExists: {
-        return "The car you wanted to save already was in your cart.";
-      }
-      default:
-      case SaveStatus.NotSaved: {
-        return "If you like this car, click on the button and save it in your collection of favourite items.";
-      }
+  const handleRemoveClick = () => {
+    if (!isCarAlreadyAdded) {
+      return;
     }
+    setSavedCars(
+      savedCars.filter(
+        (savedCar: Car) => savedCar.stockNumber !== car.stockNumber
+      )
+    );
+    setIsAdded(false);
   };
 
   return (
     <form className={styles.container}>
-      <p className={sharedClasses.fonts.Md}>{getCurrentSaveStatusText()}</p>
+      <p className={sharedClasses.fonts.Md}>
+        {isAdded
+          ? "This car is currenty in your cart. You may remove it if you want."
+          : "If you like this car, click on the button and save it in your collection of favourite items."}
+      </p>
       <section className={styles.buttonContainer}>
         <button
           className={classnames(
@@ -61,10 +54,9 @@ export const CarSave: FC<CarSaveProps> = memo(({ car }) => {
             sharedClasses.elements.button
           )}
           type="button"
-          onClick={handleSaveClick}
-          disabled={currentSaveStatus !== SaveStatus.NotSaved}
+          onClick={isAdded ? handleRemoveClick : handleSaveClick}
         >
-          Save
+          {isAdded ? "Remove" : "Save"}
         </button>
       </section>
     </form>

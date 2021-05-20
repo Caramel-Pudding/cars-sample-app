@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95vw;
+    margin: var(--offLg);
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 80vw;
+    }
+}
+
+.list {
+    width: 100%;
+}
+
+.listElement {
+    margin: var(--offMd) 0;
+}

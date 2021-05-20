@@ -16,7 +16,7 @@ export const NavItem: FC<NavItemProps> = memo(({ label, route }) => (
     <Link
       tabIndex={0}
       className={classnames(styles.link, sharedClasses.fonts.Md)}
-      to={route}
+      to={`/${route}`}
     >
       {label}
     </Link>

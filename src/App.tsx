@@ -4,6 +4,7 @@ import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { Main } from "./pages/main";
 import { Details } from "./pages/details";
+import { Orders } from "./pages/orders";
 
 import styles from "./app.module.css";
 import { Routes } from "./consts/routes";
@@ -17,7 +18,7 @@ export const App: FC = memo(() => (
           <div />
         </Route>
         <Route path={`/${Routes.Orders}`}>
-          <div />
+          <Orders />
         </Route>
         <Route path={`/${Routes.Sell}`}>
           <div />

@@ -1,4 +1,4 @@
-import React, { FC, memo, useState, useEffect } from "react";
+import React, { FC, memo } from "react";
 import { useLocation } from "react-router-dom";
 import { CarDetails } from "../../components/car-details";
 

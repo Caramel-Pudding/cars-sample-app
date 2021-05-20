@@ -1,7 +1,7 @@
 export enum Routes {
   Main = "/",
   Purchase = "purchase",
-  Orders = "Orders",
+  Orders = "orders",
   Sell = "sell",
   Details = "details",
 }
