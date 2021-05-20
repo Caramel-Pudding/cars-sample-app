@@ -3,6 +3,8 @@
 }
 
 .input {
+    display: flex;
+    justify-content: space-between;
     border: solid 1px var(--light);
     padding: var(--offSm);
     margin-top: var(--offSm);
@@ -37,4 +39,15 @@
 .button {
     padding: var(--offSm);
     width: 100%
+}
+
+.bullet { 
+    position: relative;
+    top: 0.4em;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.bulletActive {
+    transform: rotate(180deg)
 }

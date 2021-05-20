@@ -65,7 +65,19 @@ export const CustomSelect: FC<CustomSelectProps> = memo(
           onClick={toggleIsOpened}
           onKeyDown={keyboardHandler}
         >
-          {chosenOption || placeholder}
+          <span>{chosenOption || placeholder}</span>
+          <svg
+            className={classnames(styles.bullet, {
+              [styles.bulletActive]: isOpen,
+            })}
+            height="15"
+            tabIndex={0}
+            width="15"
+            onClick={toggleIsOpened}
+            onKeyDown={keyboardHandler}
+          >
+            <polygon points="1,1 7,10 14,1" style={{ fill: "#EDEDED" }} />
+          </svg>
         </button>
         {isOpen && (
           <ul className={styles.list} ref={list}>
