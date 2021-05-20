@@ -17,6 +17,7 @@ import { capitalizeFirstLetter } from "../../utilities/strings";
 import { useFetch } from "../../hooks/use-fetch";
 
 import styles from "./styles.module.css";
+import { LoaderPlaceholder } from "../loader-placeholder";
 
 export const CarFilter: FC = memo(() => {
   const colors = useFetch<FetchColorResponse>(getColorsUrl);
@@ -35,7 +36,7 @@ export const CarFilter: FC = memo(() => {
   };
 
   if (colors.isLoading || manufacturers.isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.container}>Please, wait a second...</div>;
   }
 
   if (

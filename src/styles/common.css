@@ -37,3 +37,10 @@
 .button:active {
     background-color: var(--brown);
 }
+
+.box {
+    display: flex;
+    border: solid 1px var(--light);
+    padding: var(--offMd);
+    align-items: center;
+}

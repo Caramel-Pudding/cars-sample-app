@@ -15,7 +15,12 @@ interface CarListItemProps {
 
 export const CarListItem: FC<CarListItemProps> = memo(({ car }) => (
   <article className={styles.container}>
-    <img height={80} src={car.pictureUrl} alt={`${car.modelName}`} />
+    <img
+      height={80}
+      width={100}
+      src={car.pictureUrl}
+      alt={`${car.modelName}`}
+    />
     <section className={styles.infoBlock}>
       <h2
         className={classnames(sharedClasses.fonts.LgBold, styles.headerTitle)}

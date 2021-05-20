@@ -5,6 +5,7 @@ import { setTotalPageCount } from "../../redux/features/pagination/slice";
 import { setCars, setTotalCarsCount } from "../../redux/features/cars/slice";
 import { CarListItem } from "../car-list-item";
 import { CarListHeader } from "../car-list-header";
+import { LoaderPlaceholder } from "../loader-placeholder";
 import { Pagination } from "../pagination";
 import { Car } from "../../redux/features/cars/types";
 import { GetCarsResponse } from "../../network/gateways/get-all";
@@ -30,7 +31,23 @@ export const CarList: FC = memo(() => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <article className={styles.container}>
+        <CarListHeader
+          totalCarsCount={totalCarsCount}
+          currentPageCarsCount={cars.length}
+        />
+        <ul>
+          {Array.from({ length: 10 }).map((_, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={index} className={styles.listElement}>
+              <LoaderPlaceholder />
+            </li>
+          ))}
+        </ul>
+        <Pagination />
+      </article>
+    );
   }
 
   if (error || !response) {
