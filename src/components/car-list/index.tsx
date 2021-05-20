@@ -37,7 +37,7 @@ export const CarList: FC = memo(() => {
           totalCarsCount={totalCarsCount}
           currentPageCarsCount={cars.length}
         />
-        <ul>
+        <ul className={styles.list}>
           {Array.from({ length: 10 }).map((_, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <li key={index} className={styles.listElement}>
@@ -64,7 +64,7 @@ export const CarList: FC = memo(() => {
         totalCarsCount={totalCarsCount}
         currentPageCarsCount={cars.length}
       />
-      <ul>
+      <ul className={styles.list}>
         {cars.map((car: Car) => (
           <li key={car.stockNumber} className={styles.listElement}>
             <CarListItem car={car} />

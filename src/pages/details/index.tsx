@@ -33,7 +33,7 @@ export const Details: FC = memo(() => {
       />
       <section className={styles.infoBlock}>
         <CarDetails car={response.car} />
-        <CarSave />
+        <CarSave car={response.car} />
       </section>
     </article>
   );
