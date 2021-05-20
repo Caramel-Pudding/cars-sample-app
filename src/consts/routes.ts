@@ -3,4 +3,5 @@ export enum Routes {
   Purchase = "purchase",
   Orders = "Orders",
   Sell = "sell",
+  Details = "details",
 }

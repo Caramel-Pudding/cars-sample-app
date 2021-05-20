@@ -7,7 +7,7 @@ import { CarListItem } from "../car-list-item";
 import { CarListHeader } from "../car-list-header";
 import { Pagination } from "../pagination";
 import { Car } from "../../redux/features/cars/types";
-import { fetchCars } from "../../network/gateways/cars/methods/get-all";
+import { fetchCars } from "../../network/gateways/get-all";
 
 import styles from "./styles.module.css";
 

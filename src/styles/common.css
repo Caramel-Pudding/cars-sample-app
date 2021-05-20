@@ -1,0 +1,39 @@
+.robotoLgBold {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 32px;
+}
+  
+.robotoMdBold {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+}
+  
+.robotoMd {
+    font-family: Roboto;
+    font-size: 18px;
+}
+  
+.robotoSm {
+    font-family: Roboto;
+    font-size: 14px;
+}
+  
+.robotoXSm {
+    font-family: Roboto;
+    font-size: 12px;
+}
+
+.button {
+    height: 32px;
+    width: 128px;
+    border-radius: 4px;
+    background-color: var(--orange);
+    color: white;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: var(--brown);
+}

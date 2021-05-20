@@ -6,22 +6,23 @@ import { Main } from "./pages/main";
 import { Details } from "./pages/details";
 
 import styles from "./app.module.css";
+import { Routes } from "./consts/routes";
 
 export const App: FC = memo(() => (
   <div className={styles.container}>
     <Header />
     <main>
       <Switch>
-        <Route path="/purchase">
+        <Route path={`/${Routes.Purchase}`}>
           <div />
         </Route>
-        <Route path="/orders">
+        <Route path={`/${Routes.Orders}`}>
           <div />
         </Route>
-        <Route path="/sell">
+        <Route path={`/${Routes.Sell}`}>
           <div />
         </Route>
-        <Route path="/details">
+        <Route path={`/${Routes.Details}`}>
           <Details />
         </Route>
         <Route exact path="/">

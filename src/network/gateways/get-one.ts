@@ -1,5 +1,5 @@
-import { Car } from "../../../../redux/features/cars/types";
-import { autoBasicRoute } from "../../../consts/routes";
+import { Car } from "../../redux/features/cars/types";
+import { autoBasicRoute } from "../consts/routes";
 
 interface GetCarResponse {
   car: Car;

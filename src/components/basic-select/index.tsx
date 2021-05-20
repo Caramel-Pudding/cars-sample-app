@@ -1,5 +1,4 @@
 import React, { FC, memo, FormEvent } from "react";
-import classnames from "classnames";
 
 interface BasicSelectProps {
   readonly labelText: string;

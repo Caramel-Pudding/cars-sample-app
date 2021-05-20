@@ -1,7 +1,7 @@
-import { Sort } from "../../../../redux/features/sorting/types";
-import { autoBasicRoute } from "../../../consts/routes";
+import { Sort } from "../../redux/features/sorting/types";
+import { autoBasicRoute } from "../consts/routes";
 // eslint-disable-next-line import/no-cycle
-import { GetCarsRequestParams } from "../types/get-all";
+import { GetCarsRequestParams } from "../gateways/get-all";
 
 export const getCarsLinkBuilder = ({
   page,

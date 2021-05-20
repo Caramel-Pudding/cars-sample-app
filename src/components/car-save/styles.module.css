@@ -1,0 +1,13 @@
+.container {
+    width: 20vw;
+    height: fit-content;
+    padding: var(--offLg);
+    margin: var(--offLg);
+    border: solid 1px var(--light);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

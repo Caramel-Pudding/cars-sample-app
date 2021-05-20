@@ -1,6 +1,20 @@
-import { Sort } from "../../../../redux/features/sorting/types";
-import { GetCarsRequestParams, GetCarsResponse } from "../types/get-all";
+import { Sort } from "../../redux/features/sorting/types";
+// eslint-disable-next-line import/no-cycle
 import { getCarsLinkBuilder } from "../utilities/link-builder";
+import { Car } from "../../redux/features/cars/types";
+
+export interface GetCarsRequestParams {
+  page: number;
+  color?: string;
+  manufacturer?: string;
+  sort?: Sort;
+}
+
+export interface GetCarsResponse {
+  cars: Car[];
+  totalPageCount: number;
+  totalCarsCount: number;
+}
 
 export const fetchCars = async ({
   page,

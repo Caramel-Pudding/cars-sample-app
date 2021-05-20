@@ -1,10 +1,10 @@
-import React, { FC, memo, useEffect, useState } from "react";
+import React, { FC, memo } from "react";
 import classnames from "classnames";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { setSort } from "../../redux/features/sorting/slice";
 import { Sort } from "../../redux/features/sorting/types";
-import { Fonts } from "../../consts/css";
+import { sharedClasses } from "../../consts/css";
 
 import styles from "./styles.module.css";
 import { BasicSelct } from "../basic-select";
@@ -22,10 +22,17 @@ export const CarListHeader: FC<CarListHeaderProps> = memo(
     return (
       <section className={styles.header}>
         <section>
-          <h1 className={classnames(Fonts.LgBold, styles.headTitle)}>
+          <h1
+            className={classnames(sharedClasses.fonts.LgBold, styles.headTitle)}
+          >
             Available Cars
           </h1>
-          <div className={classnames(styles.resultsSubTitle, Fonts.Md)}>
+          <div
+            className={classnames(
+              styles.resultsSubTitle,
+              sharedClasses.fonts.Md
+            )}
+          >
             Showing {currentPageCarsCount} of {totalCarsCount} results
           </div>
         </section>

@@ -8,10 +8,10 @@ import { fetchColors } from "../../network/gateways/colors";
 import { fetchManufacturers } from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../redux/features/cars/types";
 import { BasicSelct } from "../basic-select";
+import { sharedClasses } from "../../consts/css";
+import { capitalizeFirstLetter } from "../../utilities/strings";
 
 import styles from "./styles.module.css";
-import { Fonts } from "../../consts/css";
-import { capitalizeFirstLetter } from "../../utilities/strings";
 
 export const CarFilter: FC = memo(() => {
   const [availableColors, setAvailableColors] = useState<string[]>([]);
@@ -66,7 +66,10 @@ export const CarFilter: FC = memo(() => {
       />
       <section className={styles.buttonContainer}>
         <button
-          className={classnames(styles.filterButton, Fonts.MdBold)}
+          className={classnames(
+            sharedClasses.elements.button,
+            sharedClasses.fonts.MdBold
+          )}
           type="button"
           onClick={handleFiltration}
         >
