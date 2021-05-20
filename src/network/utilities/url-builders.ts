@@ -1,9 +1,8 @@
 import { Sort } from "../../redux/features/sorting/types";
 import { autoBasicRoute } from "../consts/routes";
-// eslint-disable-next-line import/no-cycle
 import { GetCarsRequestParams } from "../gateways/get-all";
 
-export const getCarsLinkBuilder = ({
+export const buildGetAllCarsUrl = ({
   page,
   color,
   manufacturer,
@@ -20,3 +19,10 @@ export const getCarsLinkBuilder = ({
   }
   return `${autoBasicRoute}/cars?sort=${sort}&page=${page}`;
 };
+
+export const buildGetSignleCarUrl = (carId: string): string =>
+  `${autoBasicRoute}/cars/${carId}`;
+
+export const getColorsUrl = `${autoBasicRoute}/colors`;
+
+export const getManufacturersUrl = `${autoBasicRoute}/manufacturers`;

@@ -1,6 +1,6 @@
 import React, { FC, memo, useState, useRef, KeyboardEvent } from "react";
 import classnames from "classnames";
-import { useCloseOnOutsideClick } from "../../hooks/close-on-outside-click";
+import { useCloseOnOutsideClick } from "../../hooks/use-close-on-outside-click";
 
 import styles from "./styles.module.css";
 

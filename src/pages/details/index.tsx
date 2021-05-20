@@ -3,34 +3,36 @@ import { useLocation } from "react-router-dom";
 import { CarDetails } from "../../components/car-details";
 
 import { CarSave } from "../../components/car-save";
-import { fetchCar } from "../../network/gateways/get-one";
-import { Car } from "../../redux/features/cars/types";
+import { useFetch } from "../../hooks/use-fetch";
+import { GetCarResponse } from "../../network/gateways/get-one";
+import { buildGetSignleCarUrl } from "../../network/utilities/url-builders";
 
 import styles from "./styles.module.css";
 
 export const Details: FC = memo(() => {
   const currentCarId = useLocation().pathname.split("/")[2];
-  const [chosenCar, setChosenCar] = useState<Car>();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { car } = await fetchCar(currentCarId);
+  const { response, isLoading, error } = useFetch<GetCarResponse>(
+    buildGetSignleCarUrl(currentCarId)
+  );
 
-      setChosenCar(car);
-    };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    fetchData();
-  }, [currentCarId]);
-
-  if (!chosenCar) {
-    return <div />;
+  if (error || !response) {
+    return null;
   }
 
   return (
     <article className={styles.container}>
-      <img height={600} alt={chosenCar.modelName} src={chosenCar.pictureUrl} />
+      <img
+        height={600}
+        alt={response.car.modelName}
+        src={response.car.pictureUrl}
+      />
       <section className={styles.infoBlock}>
-        <CarDetails car={chosenCar} />
+        <CarDetails car={response.car} />
         <CarSave />
       </section>
     </article>

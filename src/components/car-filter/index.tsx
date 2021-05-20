@@ -1,37 +1,27 @@
-import React, { FC, memo, useState, useEffect } from "react";
+import React, { FC, memo, useState } from "react";
 import classnames from "classnames";
 
 import { useAppDispatch } from "../../hooks/redux";
 import { setColor, setManufacturer } from "../../redux/features/filters/slice";
 import { setCurrentPage } from "../../redux/features/pagination/slice";
-import { fetchColors } from "../../network/gateways/colors";
-import { fetchManufacturers } from "../../network/gateways/manufacturers";
+import {
+  getColorsUrl,
+  getManufacturersUrl,
+} from "../../network/utilities/url-builders";
+import { FetchColorResponse } from "../../network/gateways/colors";
+import { FetchManufacturersResponse } from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../redux/features/cars/types";
 import { BasicSelct } from "../basic-select";
 import { sharedClasses } from "../../consts/css";
 import { capitalizeFirstLetter } from "../../utilities/strings";
+import { useFetch } from "../../hooks/use-fetch";
 
 import styles from "./styles.module.css";
 
 export const CarFilter: FC = memo(() => {
-  const [availableColors, setAvailableColors] = useState<string[]>([]);
-  const [availableManufacturers, setAvailableManufacturers] = useState<
-    string[]
-  >([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { colors } = await fetchColors();
-      const manufacturers = (await fetchManufacturers()).manufacturers.map(
-        (manufacuter: Manufacturer) => manufacuter.name
-      );
-
-      setAvailableColors(colors);
-      setAvailableManufacturers(manufacturers);
-    };
-
-    fetchData();
-  }, []);
+  const colors = useFetch<FetchColorResponse>(getColorsUrl);
+  const manufacturers =
+    useFetch<FetchManufacturersResponse>(getManufacturersUrl);
 
   const dispatch = useAppDispatch();
 
@@ -44,26 +34,45 @@ export const CarFilter: FC = memo(() => {
     dispatch(setCurrentPage({ value: 1 }));
   };
 
+  if (colors.isLoading || manufacturers.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (
+    (colors.error || !colors.response?.colors) &&
+    (manufacturers.error || !manufacturers.response?.manufacturers)
+  ) {
+    return null;
+  }
+
   return (
     <form className={styles.container}>
-      <BasicSelct
-        placeholder="All car colors"
-        options={availableColors.map((color) => capitalizeFirstLetter(color))}
-        handler={(color) => setSelectedColor(color)}
-        chosenOption={selectedColor}
-        labelText="Color"
-        containerClasses={styles.selectContainer}
-        selectClasses={styles.selectInput}
-      />
-      <BasicSelct
-        placeholder="All manufacturers"
-        options={availableManufacturers}
-        handler={(manufacturer) => setSelectedManufacturer(manufacturer)}
-        chosenOption={selectedManufacturer}
-        labelText="Manufacturers"
-        containerClasses={styles.selectContainer}
-        selectClasses={styles.selectInput}
-      />
+      {colors.response?.colors && (
+        <BasicSelct
+          placeholder="All car colors"
+          options={colors.response.colors.map((color) =>
+            capitalizeFirstLetter(color)
+          )}
+          handler={(color) => setSelectedColor(color)}
+          chosenOption={selectedColor}
+          labelText="Color"
+          containerClasses={styles.selectContainer}
+          selectClasses={styles.selectInput}
+        />
+      )}
+      {manufacturers.response?.manufacturers && (
+        <BasicSelct
+          placeholder="All manufacturers"
+          options={manufacturers.response.manufacturers.map(
+            (manufacturer: Manufacturer) => manufacturer.name
+          )}
+          handler={(manufacturer) => setSelectedManufacturer(manufacturer)}
+          chosenOption={selectedManufacturer}
+          labelText="Manufacturers"
+          containerClasses={styles.selectContainer}
+          selectClasses={styles.selectInput}
+        />
+      )}
       <section className={styles.buttonContainer}>
         <button
           className={classnames(

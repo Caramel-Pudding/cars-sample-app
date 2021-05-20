@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from "react";
+import React, { FC, memo } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { setTotalPageCount } from "../../redux/features/pagination/slice";
@@ -7,7 +7,9 @@ import { CarListItem } from "../car-list-item";
 import { CarListHeader } from "../car-list-header";
 import { Pagination } from "../pagination";
 import { Car } from "../../redux/features/cars/types";
-import { fetchCars } from "../../network/gateways/get-all";
+import { GetCarsResponse } from "../../network/gateways/get-all";
+import { buildGetAllCarsUrl } from "../../network/utilities/url-builders";
+import { useFetch } from "../../hooks/use-fetch";
 
 import styles from "./styles.module.css";
 
@@ -18,22 +20,26 @@ export const CarList: FC = memo(() => {
   const { sort } = useAppSelector((state) => state.sorting);
   const { cars, totalCarsCount } = useAppSelector((state) => state.cars);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchCars({
-        color,
-        manufacturer,
-        page: currentPage,
-        sort,
-      });
+  const { response, isLoading, error } = useFetch<GetCarsResponse>(
+    buildGetAllCarsUrl({
+      color,
+      manufacturer,
+      page: currentPage,
+      sort,
+    })
+  );
 
-      dispatch(setCars({ cars: data.cars }));
-      dispatch(setTotalCarsCount({ value: data.totalCarsCount }));
-      dispatch(setTotalPageCount({ value: data.totalPageCount }));
-    };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    fetchData();
-  }, [color, manufacturer, currentPage, sort, dispatch]);
+  if (error || !response) {
+    return null;
+  }
+
+  dispatch(setCars({ cars: response.cars }));
+  dispatch(setTotalCarsCount({ value: response.totalCarsCount }));
+  dispatch(setTotalPageCount({ value: response.totalPageCount }));
 
   return (
     <article className={styles.container}>
