@@ -7,7 +7,7 @@ import { useLocalStorage } from "../../hooks/use-local-storage";
 import styles from "./styles.module.css";
 
 export const Orders: FC = memo(() => {
-  const [savedCars, setSavedCars] = useLocalStorage<Car[]>("savedCars", []);
+  const [savedCars] = useLocalStorage<Car[]>("savedCars", []);
 
   return (
     <article className={styles.container}>

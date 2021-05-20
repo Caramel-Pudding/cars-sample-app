@@ -1,27 +1,28 @@
 import React, { FC, memo, useState, useRef, KeyboardEvent } from "react";
 import classnames from "classnames";
 import { useCloseOnOutsideClick } from "../../hooks/use-close-on-outside-click";
+import { sharedClasses } from "../../consts/css";
 
 import styles from "./styles.module.css";
 
-export interface BasicMultiSelctProps {
+export interface CustomSelectProps {
   readonly labelText: string;
   readonly options: string[];
-  readonly chosenOptions: string[];
-  readonly handler: (select: string[]) => void;
-  readonly placeholder: string;
+  readonly chosenOption: string;
+  readonly handler: (select: string) => void;
+  readonly placeholder?: string;
   readonly containerClasses?: string;
   readonly selectClasses?: string;
   readonly optionClasses?: string;
 }
 
-export const BasicMultiSelct: FC<BasicMultiSelctProps> = memo(
+export const CustomSelect: FC<CustomSelectProps> = memo(
   ({
     labelText,
     options = [],
-    chosenOptions,
+    chosenOption,
     handler,
-    placeholder,
+    placeholder = "",
     containerClasses = "",
     selectClasses = "",
     optionClasses = "",
@@ -40,17 +41,15 @@ export const BasicMultiSelct: FC<BasicMultiSelctProps> = memo(
       }
     };
 
-    const isElementSelected = (value: string) => chosenOptions.includes(value);
+    const isElementSelected = (value: string) => chosenOption === value;
 
     const selectHandler = (value: string) => {
-      if (isElementSelected(value)) {
-        handler(chosenOptions.filter((option) => option !== value));
-      } else {
-        handler([...chosenOptions, value]);
+      if (value === chosenOption) {
+        handler("");
+        return;
       }
+      handler(value);
     };
-
-    const selectedValuesFormattedForInput = chosenOptions.join(", ");
 
     return (
       <label className={classnames(styles.container, containerClasses)}>
@@ -58,13 +57,15 @@ export const BasicMultiSelct: FC<BasicMultiSelctProps> = memo(
         <button
           tabIndex={0}
           type="button"
-          className={classnames(styles.input, selectClasses)}
+          className={classnames(
+            styles.input,
+            sharedClasses.fonts.Md,
+            selectClasses
+          )}
           onClick={toggleIsOpened}
           onKeyDown={keyboardHandler}
         >
-          {chosenOptions.length > 0
-            ? selectedValuesFormattedForInput
-            : placeholder}
+          {chosenOption || placeholder}
         </button>
         {isOpen && (
           <ul className={styles.list} ref={list}>
@@ -81,7 +82,7 @@ export const BasicMultiSelct: FC<BasicMultiSelctProps> = memo(
                 value={option}
               >
                 <button
-                  className={styles.button}
+                  className={classnames(sharedClasses.fonts.Md, styles.button)}
                   type="button"
                   onClick={() => selectHandler(option)}
                 >

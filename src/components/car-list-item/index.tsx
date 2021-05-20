@@ -16,7 +16,7 @@ interface CarListItemProps {
 export const CarListItem: FC<CarListItemProps> = memo(({ car }) => (
   <article className={styles.container}>
     <img
-      height={80}
+      height={85}
       width={100}
       src={car.pictureUrl}
       alt={`${car.modelName}`}

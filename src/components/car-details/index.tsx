@@ -4,8 +4,6 @@ import { constructCarInfoString } from "../../utilities/cars";
 import { Car } from "../../redux/features/cars/types";
 import { sharedClasses } from "../../consts/css";
 
-import styles from "./styles.module.css";
-
 interface CarDetailsProps {
   car: Car;
 }

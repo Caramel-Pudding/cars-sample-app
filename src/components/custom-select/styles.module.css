@@ -1,23 +1,19 @@
 .container {
     position: relative;
-    display: flex;
-    flex-direction: column;
 }
 
 .input {
     border: solid 1px var(--light);
     padding: var(--offSm);
     margin-top: var(--offSm);
-    white-space: nowrap;
-    overflow-y: scroll;
 }
 
 .list {
     position: absolute;
-    top: 50px;
+    top: 60px;
     background-color: white;
     z-index: 1;
-    width: 20vw;
+    width: 100%;
 }
 
 .listElement {
@@ -26,15 +22,16 @@
 }
 
 .listElementSelected {
-    background-color: rgba(74, 74, 74, 0.2);
+    background-color: rgba(234, 127, 40, 1);
+    color: white;
 }
   
 .listElementNotSelected:hover {
-    background-color: rgba(74, 74, 74, 0.1);
+    background-color: rgba(234, 127, 40, 0.75);
 }
   
 .listElementNotSelected:focus {
-    background-color: rgba(74, 74, 74, 0.1);
+    background-color: rgba(234, 127, 40, 0.75);
 }
 
 .button {

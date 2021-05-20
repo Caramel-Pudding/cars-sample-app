@@ -7,7 +7,7 @@ import { Sort } from "../../redux/features/sorting/types";
 import { sharedClasses } from "../../consts/css";
 
 import styles from "./styles.module.css";
-import { BasicSelct } from "../basic-select";
+import { CustomSelect } from "../custom-select";
 import { getEnumKeyByValue } from "../../utilities/enums";
 
 interface CarListHeaderProps {
@@ -37,7 +37,7 @@ export const CarListHeader: FC<CarListHeaderProps> = memo(
           </div>
         </section>
         <section>
-          <BasicSelct
+          <CustomSelect
             chosenOption={getEnumKeyByValue(Sort, sort)}
             labelText="Sort by"
             options={Object.keys(Sort)}

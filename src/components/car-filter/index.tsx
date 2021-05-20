@@ -10,7 +10,7 @@ import {
   getManufacturersUrl,
 } from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../redux/features/cars/types";
-import { BasicSelct } from "../basic-select";
+import { CustomSelect } from "../custom-select";
 import { sharedClasses } from "../../consts/css";
 import { capitalizeFirstLetter } from "../../utilities/strings";
 import { useFetch } from "../../hooks/use-fetch";
@@ -46,7 +46,7 @@ export const CarFilter: FC = memo(() => {
   return (
     <form className={styles.container}>
       {colors.response?.colors && (
-        <BasicSelct
+        <CustomSelect
           placeholder="All car colors"
           options={colors.response.colors.map((color) =>
             capitalizeFirstLetter(color)
@@ -59,7 +59,7 @@ export const CarFilter: FC = memo(() => {
         />
       )}
       {manufacturers.response?.manufacturers && (
-        <BasicSelct
+        <CustomSelect
           placeholder="All manufacturers"
           options={manufacturers.response.manufacturers.map(
             (manufacturer: Manufacturer) => manufacturer.name
