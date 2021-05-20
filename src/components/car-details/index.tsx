@@ -1,8 +1,11 @@
 import React, { FC, memo } from "react";
+import classnames from "classnames";
 
 import { constructCarInfoString } from "../../utilities/cars";
 import { Car } from "../../redux/features/cars/types";
 import { sharedClasses } from "../../consts/css";
+
+import styles from "./styles.module.css";
 
 interface CarDetailsProps {
   car: Car;
@@ -11,7 +14,11 @@ interface CarDetailsProps {
 export const CarDetails: FC<CarDetailsProps> = memo(({ car }) => {
   return (
     <section>
-      <h1 className={sharedClasses.fonts.LgBold}>{car.modelName}</h1>
+      <h1
+        className={classnames(sharedClasses.fonts.LgBold, styles.headerTitle)}
+      >
+        {car.modelName}
+      </h1>
       <div className={sharedClasses.fonts.Md}>
         {constructCarInfoString(car)}
       </div>

@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { setTotalPageCount } from "../../redux/features/pagination/slice";
@@ -32,33 +32,17 @@ export const CarList: FC = memo(() => {
     })
   );
 
-  if (isLoading) {
-    return (
-      <article className={styles.container}>
-        <CarListHeader
-          totalCarsCount={totalCarsCount}
-          currentPageCarsCount={cars.length}
-        />
-        <ul className={styles.list}>
-          {Array.from({ length: 10 }).map((_, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <li key={index} className={styles.listElement}>
-              <LoaderPlaceholder />
-            </li>
-          ))}
-        </ul>
-        <Pagination />
-      </article>
-    );
-  }
+  useEffect(() => {
+    if (response) {
+      dispatch(setCars({ cars: response.cars }));
+      dispatch(setTotalCarsCount({ value: response.totalCarsCount }));
+      dispatch(setTotalPageCount({ value: response.totalPageCount }));
+    }
+  }, [response, dispatch]);
 
-  if (error || !response) {
-    return null;
+  if (error) {
+    return <div>Loading...</div>;
   }
-
-  dispatch(setCars({ cars: response.cars }));
-  dispatch(setTotalCarsCount({ value: response.totalCarsCount }));
-  dispatch(setTotalPageCount({ value: response.totalPageCount }));
 
   return (
     <article className={styles.container}>
@@ -67,11 +51,18 @@ export const CarList: FC = memo(() => {
         currentPageCarsCount={cars.length}
       />
       <ul className={styles.list}>
-        {cars.map((car: Car) => (
-          <li key={car.stockNumber} className={styles.listElement}>
-            <CarListItem car={car} />
-          </li>
-        ))}
+        {isLoading
+          ? Array.from({ length: 10 }).map((_, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index} className={styles.listElement}>
+                <LoaderPlaceholder />
+              </li>
+            ))
+          : cars.map((car: Car) => (
+              <li key={car.stockNumber} className={styles.listElement}>
+                <CarListItem car={car} />
+              </li>
+            ))}
       </ul>
       <Pagination />
     </article>

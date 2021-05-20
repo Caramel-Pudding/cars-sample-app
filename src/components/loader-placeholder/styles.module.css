@@ -7,17 +7,17 @@
 
 .infoBlock {
     width:100%;
-    margin-left: var(--offMd)
+    margin-left: var(--offLg)
 }
 
 .picturePlaceholder {
-    height: 80px;
+    height: 85px;
     width: 110px;
     background-color: var(--light);
 }
 
 .titlePlaceholder {
-    height: 30px;
+    height: 35px;
     width: 40%;
     background-color: var(--light);
     margin: var(--offSm) 0;
