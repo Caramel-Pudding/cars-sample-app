@@ -21,14 +21,14 @@ export const buildGetAllCarsUrl = ({
   manufacturer,
   sort = Sort.Ascending,
 }: GetCarsRequestParams): string => {
-  if (color && manufacturer) {
-    return `${autoBasicRoute}/cars?manufacturer=${manufacturer}&color=${color}&sort=${sort}&page=${page}`;
-  }
+  const url = new URL(`${autoBasicRoute}/cars`);
+  url.searchParams.append("sort", sort);
+  url.searchParams.append("page", String(page));
   if (color) {
-    return `${autoBasicRoute}/cars?color=${color}&sort=${sort}&page=${page}`;
+    url.searchParams.append("color", color);
   }
   if (manufacturer) {
-    return `${autoBasicRoute}/cars?manufacturer=${manufacturer}&sort=${sort}&page=${page}`;
+    url.searchParams.append("manufacturer", manufacturer);
   }
-  return `${autoBasicRoute}/cars?sort=${sort}&page=${page}`;
+  return url.href;
 };
