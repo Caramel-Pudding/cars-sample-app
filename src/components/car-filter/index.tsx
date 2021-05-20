@@ -4,12 +4,11 @@ import classnames from "classnames";
 import { useAppDispatch } from "../../hooks/redux";
 import { setColor, setManufacturer } from "../../redux/features/filters/slice";
 import { setCurrentPage } from "../../redux/features/pagination/slice";
+import { GetColorResponse, getColorsUrl } from "../../network/gateways/colors";
 import {
-  getColorsUrl,
+  GetManufacturersResponse,
   getManufacturersUrl,
-} from "../../network/utilities/url-builders";
-import { FetchColorResponse } from "../../network/gateways/colors";
-import { FetchManufacturersResponse } from "../../network/gateways/manufacturers";
+} from "../../network/gateways/manufacturers";
 import { Manufacturer } from "../../redux/features/cars/types";
 import { BasicSelct } from "../basic-select";
 import { sharedClasses } from "../../consts/css";
@@ -17,12 +16,10 @@ import { capitalizeFirstLetter } from "../../utilities/strings";
 import { useFetch } from "../../hooks/use-fetch";
 
 import styles from "./styles.module.css";
-import { LoaderPlaceholder } from "../loader-placeholder";
 
 export const CarFilter: FC = memo(() => {
-  const colors = useFetch<FetchColorResponse>(getColorsUrl);
-  const manufacturers =
-    useFetch<FetchManufacturersResponse>(getManufacturersUrl);
+  const colors = useFetch<GetColorResponse>(getColorsUrl);
+  const manufacturers = useFetch<GetManufacturersResponse>(getManufacturersUrl);
 
   const dispatch = useAppDispatch();
 

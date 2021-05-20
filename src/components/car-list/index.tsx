@@ -8,8 +8,10 @@ import { CarListHeader } from "../car-list-header";
 import { LoaderPlaceholder } from "../loader-placeholder";
 import { Pagination } from "../pagination";
 import { Car } from "../../redux/features/cars/types";
-import { GetCarsResponse } from "../../network/gateways/get-all";
-import { buildGetAllCarsUrl } from "../../network/utilities/url-builders";
+import {
+  GetCarsResponse,
+  buildGetAllCarsUrl,
+} from "../../network/gateways/get-all";
 import { useFetch } from "../../hooks/use-fetch";
 
 import styles from "./styles.module.css";

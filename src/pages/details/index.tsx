@@ -4,8 +4,10 @@ import { CarDetails } from "../../components/car-details";
 
 import { CarSave } from "../../components/car-save";
 import { useFetch } from "../../hooks/use-fetch";
-import { GetCarResponse } from "../../network/gateways/get-one";
-import { buildGetSignleCarUrl } from "../../network/utilities/url-builders";
+import {
+  GetCarResponse,
+  buildGetSignleCarUrl,
+} from "../../network/gateways/get-one";
 
 import styles from "./styles.module.css";
 
