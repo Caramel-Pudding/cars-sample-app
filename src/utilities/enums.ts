@@ -6,6 +6,7 @@ export const convertStringEnumToArrayOfKeys = (stringEnum: {
   [stringEnum: string]: string;
 }): string[] => Object.keys(stringEnum);
 
+// TODO: Should definitely type it better
 export const getEnumKeyByValue = (
   stringEnum: {
     [stringEnum: string]: string;

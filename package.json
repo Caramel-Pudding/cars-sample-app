@@ -58,7 +58,8 @@
         }
       ],
       "unicorn/no-null": "off",
-      "jsx-a11y/no-onchange": "off"
+      "jsx-a11y/no-onchange": "off",
+      "unicorn/no-array-for-each": "off"
     },
     "overrides": [
       {
