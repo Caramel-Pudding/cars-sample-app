@@ -13,12 +13,3 @@
 .headerTitle {
     margin: 0;
 }
-
-.link {
-    text-decoration: none;
-    color: var(--orange)
-}
-
-.link:hover {
-    text-decoration: underline;
-}

@@ -30,7 +30,10 @@ export const CarListItem: FC<CarListItemProps> = memo(({ car }) => (
       <div className={sharedClasses.fonts.Md}>
         {constructCarInfoString(car)}
       </div>
-      <Link className={styles.link} to={`${Routes.Details}/${car.stockNumber}`}>
+      <Link
+        className={sharedClasses.elements.link}
+        to={`${Routes.Details}/${car.stockNumber}`}
+      >
         View details
       </Link>
     </section>

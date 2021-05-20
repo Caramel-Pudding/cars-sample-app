@@ -8,6 +8,7 @@ import {
   GetCarResponse,
   buildGetSignleCarUrl,
 } from "../../network/gateways/get-one";
+import { NotFound } from "../not-found";
 
 import styles from "./styles.module.css";
 
@@ -23,7 +24,7 @@ export const Details: FC = memo(() => {
   }
 
   if (error || !response) {
-    return null;
+    return <NotFound />;
   }
 
   return (

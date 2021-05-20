@@ -44,3 +44,12 @@
     padding: var(--offMd);
     align-items: center;
 }
+
+.link {
+    text-decoration: none;
+    color: var(--orange)
+}
+
+.link:hover {
+    text-decoration: underline;
+}

@@ -8,5 +8,6 @@ export const sharedClasses = {
   },
   elements: {
     button: "button",
+    link: "link",
   },
 };
