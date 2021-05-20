@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95vw;
+    width: calc(100vw - var(--offLg)*2);
     margin: var(--offLg);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
     .container {
-        width: 80vw;
+        width: 75vw;
     }
 }
 

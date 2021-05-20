@@ -1,5 +1,5 @@
 .container {
-    width: 95vw;
+    width: calc(100vw - var(--offLg)*2);
     box-sizing: border-box;
     height: fit-content;
     padding: var(--offLg);
@@ -7,9 +7,9 @@
     border: solid 1px var(--light);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
     .container {
-        width: 20vw;
+        width: 25vw;
     }
 }
 
