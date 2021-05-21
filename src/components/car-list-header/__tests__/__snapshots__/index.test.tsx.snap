@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarListHeader Renders with proper data 1`] = `
+<div>
+  <section
+    class="header"
+  >
+    <section>
+      <h1
+        class="robotoLgBold headTitle"
+      >
+        Available Cars
+      </h1>
+      <div
+        class="resultsSubTitle robotoMd"
+      >
+        Showing 
+        10
+         of 
+        100
+         results
+      </div>
+    </section>
+    <section>
+      <label
+        class="container selectContainer"
+      >
+        Sort by
+        <button
+          class="input robotoMd selectInput"
+          data-testid="INPUT_DATA_TEST_ID"
+          tabindex="0"
+          type="button"
+        >
+          Ascending
+          <svg
+            class="bullet"
+            height="15"
+            tabindex="0"
+            width="15"
+          >
+            <polygon
+              points="1,1 7,10 14,1"
+              style="fill: #EDEDED;"
+            />
+          </svg>
+        </button>
+      </label>
+    </section>
+  </section>
+</div>
+`;

@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CustomSelect /> Properly select another option 1`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      TEST1
+      <svg
+        class="bullet"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+  </label>
+</div>
+`;
+
+exports[`<CustomSelect /> Properly select another option 2`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      TEST2
+      <svg
+        class="bullet bulletActive"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+    <ul
+      class="list"
+    >
+      <li
+        class="listElement listElementNotSelected"
+        value="TEST1"
+      >
+        <button
+          class="robotoMd button"
+          type="button"
+        >
+          TEST1
+        </button>
+      </li>
+      <li
+        class="listElement listElementSelected"
+        value="TEST2"
+      >
+        <button
+          class="robotoMd button"
+          type="button"
+        >
+          TEST2
+        </button>
+      </li>
+    </ul>
+  </label>
+</div>
+`;
+
+exports[`<CustomSelect /> Uncheck when already selected option clicked 1`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      TEST1
+      <svg
+        class="bullet"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+  </label>
+</div>
+`;
+
+exports[`<CustomSelect /> Uncheck when already selected option clicked 2`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      placeholder
+      <svg
+        class="bullet bulletActive"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+    <ul
+      class="list"
+    >
+      <li
+        class="listElement listElementNotSelected"
+        value="TEST1"
+      >
+        <button
+          class="robotoMd button"
+          type="button"
+        >
+          TEST1
+        </button>
+      </li>
+      <li
+        class="listElement listElementNotSelected"
+        value="TEST2"
+      >
+        <button
+          class="robotoMd button"
+          type="button"
+        >
+          TEST2
+        </button>
+      </li>
+    </ul>
+  </label>
+</div>
+`;
+
+exports[`<CustomSelect /> should render proper label 1`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      TEST1
+      <svg
+        class="bullet"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+  </label>
+</div>
+`;
+
+exports[`<CustomSelect /> should render undefined label as '' 1`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      TEST1
+      <svg
+        class="bullet"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+  </label>
+</div>
+`;
+
+exports[`<CustomSelect /> should render undefined label as '' 2`] = `
+<div>
+  <label
+    class="container"
+  >
+    TEST
+    <button
+      class="input robotoMd"
+      data-testid="INPUT_DATA_TEST_ID"
+      tabindex="0"
+      type="button"
+    >
+      TEST1
+      <svg
+        class="bullet"
+        height="15"
+        tabindex="0"
+        width="15"
+      >
+        <polygon
+          points="1,1 7,10 14,1"
+          style="fill: #EDEDED;"
+        />
+      </svg>
+    </button>
+  </label>
+</div>
+`;

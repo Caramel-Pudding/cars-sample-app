@@ -5,6 +5,8 @@ import { setCurrentPage } from "../../redux/features/pagination/slice";
 
 import styles from "./styles.module.css";
 
+export const pageCounterTestId = "PAGE_COUNTER_TEST_ID";
+
 export const Pagination: FC = memo(() => {
   const dispatch = useAppDispatch();
   const { currentPage, totalPageCount } = useAppSelector(
@@ -38,7 +40,7 @@ export const Pagination: FC = memo(() => {
       >
         Previous
       </button>
-      <span>
+      <span data-testid={pageCounterTestId}>
         Page {currentPage} of {totalPageCount}
       </span>
       <button

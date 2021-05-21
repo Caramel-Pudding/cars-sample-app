@@ -5,6 +5,8 @@ import { sharedClasses } from "../../consts/css";
 
 import styles from "./styles.module.css";
 
+export const inputDataTestId = "INPUT_DATA_TEST_ID";
+
 export interface CustomSelectProps {
   readonly labelText: string;
   readonly options: string[];
@@ -45,6 +47,9 @@ export const CustomSelect: FC<CustomSelectProps> = memo(
 
     const selectHandler = (value: string) => {
       if (value === chosenOption) {
+        if (!placeholder) {
+          return;
+        }
         handler("");
         return;
       }
@@ -55,6 +60,7 @@ export const CustomSelect: FC<CustomSelectProps> = memo(
       <label className={classnames(styles.container, containerClasses)}>
         {labelText}
         <button
+          data-testid={inputDataTestId}
           tabIndex={0}
           type="button"
           className={classnames(
@@ -65,7 +71,7 @@ export const CustomSelect: FC<CustomSelectProps> = memo(
           onClick={toggleIsOpened}
           onKeyDown={keyboardHandler}
         >
-          <span>{chosenOption || placeholder}</span>
+          {chosenOption || placeholder}
           <svg
             className={classnames(styles.bullet, {
               [styles.bulletActive]: isOpen,

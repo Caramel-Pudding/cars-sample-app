@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarListItem Renders with proper data 1`] = `
+<div>
+  <article
+    class="container"
+  >
+    <img
+      alt="CLC-Klasse"
+      height="85"
+      src="https://auto1-js-task-api--mufasa71.repl.co/images/car.svg"
+      width="100"
+    />
+    <section
+      class="infoBlock"
+    >
+      <h2
+        class="robotoLgBold headerTitle"
+      >
+        CLC-Klasse
+      </h2>
+      <div
+        class="robotoMd"
+      >
+        Stock # 63428 - 100.049 KM - Diesel - Yellow
+      </div>
+      <a
+        class="link"
+        href="/details/63428"
+      >
+        View details
+      </a>
+    </section>
+  </article>
+</div>
+`;
